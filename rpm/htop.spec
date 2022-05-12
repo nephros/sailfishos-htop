@@ -49,3 +49,4 @@ rm -Rvf %{buildroot}%{_mandir}/man1
 %defattr(-,root,root,-)
 %{_datadir}/applications/htop.desktop
 %{_datadir}/icons/hicolor/128x128/apps/htop.png
+%{_datadir}/icons/hicolor/scalable/apps/htop.svg
