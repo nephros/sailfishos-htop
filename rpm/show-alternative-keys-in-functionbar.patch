@@ -1,5 +1,27 @@
+diff --git a/CommandLine.c b/CommandLine.c
+index b2ad06e..7230178 100644
+--- a/CommandLine.c
++++ b/CommandLine.c
+@@ -116,6 +116,7 @@ static CommandLineStatus parseArguments(const char* program, int argc, char** ar
+       {"no-unicode", no_argument,         0, 'U'},
+       {"tree",       no_argument,         0, 't'},
+       {"pid",        required_argument,   0, 'p'},
++      {"alt-keys",   no_argument,         0, 'a'},
+       {"filter",     required_argument,   0, 'F'},
+       {"highlight-changes", optional_argument, 0, 'H'},
+       {"readonly",   no_argument,         0, 128},
+@@ -129,6 +130,9 @@ static CommandLineStatus parseArguments(const char* program, int argc, char** ar
+       if (opt == EOF)
+          break;
+       switch (opt) {
++         case 'a':
++            FunctionBar_useAltKeys(true);
++            break;
+          case 'h':
+             printHelpFlag(program);
+             return STATUS_OK_EXIT;
 diff --git a/FunctionBar.c b/FunctionBar.c
-index 1c260ab..0a9a95c 100644
+index fc3304a..23ca5ac 100644
 --- a/FunctionBar.c
 +++ b/FunctionBar.c
 @@ -17,6 +17,11 @@ in the source distribution for its full text.
@@ -24,10 +46,10 @@ index 1c260ab..0a9a95c 100644
        this->size = ARRAYSIZE(FunctionBar_FEvents);
     }
 diff --git a/FunctionBar.h b/FunctionBar.h
-index 925e323..8c5f00a 100644
+index ebe405f..8e10f87 100644
 --- a/FunctionBar.h
 +++ b/FunctionBar.h
-@@ -20,6 +20,8 @@ typedef struct FunctionBar_ {
+@@ -21,6 +21,8 @@ typedef struct FunctionBar_ {
     bool staticData;
  } FunctionBar;
  
@@ -36,25 +58,3 @@ index 925e323..8c5f00a 100644
  FunctionBar* FunctionBar_newEnterEsc(const char* enter, const char* esc);
  
  FunctionBar* FunctionBar_new(const char* const* functions, const char* const* keys, const int* events);
-diff --git a/htop.c b/htop.c
-index 00ff1da..6b93e6d 100644
---- a/htop.c
-+++ b/htop.c
-@@ -106,6 +106,7 @@ static CommandLineSettings parseArguments(int argc, char** argv) {
-       {"no-unicode", no_argument,         0, 'U'},
-       {"tree",       no_argument,         0, 't'},
-       {"pid",        required_argument,   0, 'p'},
-+      {"alt-keys",   no_argument,         0, 'a'},
-       {"filter",     required_argument,   0, 'F'},
-       {"highlight-changes", optional_argument, 0, 'H'},
-       {0,0,0,0}
-@@ -116,6 +117,9 @@ static CommandLineSettings parseArguments(int argc, char** argv) {
-    while ((opt = getopt_long(argc, argv, "hVMCs:td:u::Up:F:H::", long_opts, &opti))) {
-       if (opt == EOF) break;
-       switch (opt) {
-+         case 'a':
-+            FunctionBar_useAltKeys(true);
-+            break;
-          case 'h':
-             printHelpFlag();
-             exit(0);
