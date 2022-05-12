@@ -1,6 +1,6 @@
 Name:       htop
 Summary:    Interactive process viewer
-Version:    3.0.2
+Version:    3.0.5
 Release:    1
 License:    GPLv2+
 URL:        https://htop.dev/
