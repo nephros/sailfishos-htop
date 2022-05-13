@@ -1,8 +1,8 @@
 diff --git a/CommandLine.c b/CommandLine.c
-index b2ad06e..7230178 100644
+index d21f482..3d97608 100644
 --- a/CommandLine.c
 +++ b/CommandLine.c
-@@ -116,6 +116,7 @@ static CommandLineStatus parseArguments(const char* program, int argc, char** ar
+@@ -118,6 +118,7 @@ static CommandLineStatus parseArguments(const char* program, int argc, char** ar
        {"no-unicode", no_argument,         0, 'U'},
        {"tree",       no_argument,         0, 't'},
        {"pid",        required_argument,   0, 'p'},
@@ -10,7 +10,7 @@ index b2ad06e..7230178 100644
        {"filter",     required_argument,   0, 'F'},
        {"highlight-changes", optional_argument, 0, 'H'},
        {"readonly",   no_argument,         0, 128},
-@@ -129,6 +130,9 @@ static CommandLineStatus parseArguments(const char* program, int argc, char** ar
+@@ -131,6 +132,9 @@ static CommandLineStatus parseArguments(const char* program, int argc, char** ar
        if (opt == EOF)
           break;
        switch (opt) {
@@ -21,7 +21,7 @@ index b2ad06e..7230178 100644
              printHelpFlag(program);
              return STATUS_OK_EXIT;
 diff --git a/FunctionBar.c b/FunctionBar.c
-index fc3304a..23ca5ac 100644
+index 0850037..9c0e056 100644
 --- a/FunctionBar.c
 +++ b/FunctionBar.c
 @@ -17,6 +17,11 @@ in the source distribution for its full text.
@@ -46,7 +46,7 @@ index fc3304a..23ca5ac 100644
        this->size = ARRAYSIZE(FunctionBar_FEvents);
     }
 diff --git a/FunctionBar.h b/FunctionBar.h
-index ebe405f..8e10f87 100644
+index f01a5ef..2ca77a0 100644
 --- a/FunctionBar.h
 +++ b/FunctionBar.h
 @@ -21,6 +21,8 @@ typedef struct FunctionBar_ {
